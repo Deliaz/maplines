@@ -50,8 +50,8 @@ function Cross({markerPosition}) {
 
       if (markerPosition) {
         setDistance({
-          y: (e.latlng.distanceTo([e.latlng.lat, markerPosition.lng]) / 1e3).toFixed(2),
-          x: (e.latlng.distanceTo([markerPosition.lat, e.latlng.lng]) / 1e3).toFixed(2),
+          x: (e.latlng.distanceTo([e.latlng.lat, markerPosition.lng]) / 1e3).toFixed(2),
+          y: (e.latlng.distanceTo([markerPosition.lat, e.latlng.lng]) / 1e3).toFixed(2),
           d: (e.latlng.distanceTo(markerPosition) / 1e3).toFixed(2),
         });
       }
