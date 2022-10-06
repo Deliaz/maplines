@@ -107,6 +107,9 @@ function App() {
           <h2>Click on the map and move your mouse pointer around to see the distance from that
             point</h2>
         </div>
+        <div className="social-link">
+          <a href="https://twitter.com/d3liaz">twitter.com/d3liaz</a>
+        </div>
       </header>
       <MapContainer center={[20, 0]} zoom={2.8} scrollWheelZoom={true}>
         <TileLayer

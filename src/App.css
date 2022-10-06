@@ -35,3 +35,12 @@ header h2 {
     margin-top: 4px;
     color: #555;
 }
+
+.social-link {
+    justify-self: flex-end;
+    margin-left: auto;
+}
+
+.social-link a {
+    color: #0088cc
+}
