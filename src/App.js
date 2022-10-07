@@ -9,6 +9,7 @@ import {
   Polyline,
   useMapEvents,
   Popup,
+  Circle,
 } from 'react-leaflet'
 import L from 'leaflet';
 import {useState} from 'react';
@@ -49,11 +50,15 @@ function Cross({markerPosition}) {
       setHPosition(e.latlng.lng);
 
       if (markerPosition) {
+        const rMeters = e.latlng.distanceTo(markerPosition)
         setDistance({
-          x: (e.latlng.distanceTo([e.latlng.lat, markerPosition.lng]) / 1e3).toFixed(2),
-          y: (e.latlng.distanceTo([markerPosition.lat, e.latlng.lng]) / 1e3).toFixed(2),
-          d: (e.latlng.distanceTo(markerPosition) / 1e3).toFixed(2),
+          formattedX: (e.latlng.distanceTo([e.latlng.lat, markerPosition.lng]) / 1e3).toFixed(2),
+          formattedY: (e.latlng.distanceTo([markerPosition.lat, e.latlng.lng]) / 1e3).toFixed(2),
+          formattedR: (rMeters / 1e3).toFixed(2),
+          r: rMeters,
         });
+      } else {
+        setDistance(null);
       }
     },
   });
@@ -83,11 +88,18 @@ function Cross({markerPosition}) {
         </Polyline>
 
         {Boolean(distance) && (
-          <Popup position={markerPosition}>
-            X: {distance.x} km <br />
-            Y: {distance.y} km <br />
-            D: {distance.d} km
-          </Popup>
+          <>
+            <Popup position={markerPosition}>
+              X: {distance.formattedX} km <br />
+              Y: {distance.formattedY} km <br />
+              R: {distance.formattedR} km
+            </Popup>
+            <Circle center={markerPosition}
+              radius={distance.r}
+              weight={1}
+              fill={false}
+              color={LINE_COLOR} />
+          </>
         )}
       </>
     )}
