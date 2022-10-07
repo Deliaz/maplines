@@ -13,6 +13,8 @@ import {
 } from 'react-leaflet'
 import L from 'leaflet';
 import {useState} from 'react';
+import {AiFillGithub} from 'react-icons/ai';
+import {AiFillTwitterCircle} from 'react-icons/ai';
 
 const LINE_WIDTH = 2;
 const LINE_COLOR = 'gray'
@@ -106,6 +108,14 @@ function Cross({markerPosition}) {
   </>
 }
 
+function Link({url, icon, children}) {
+  const Icon = icon;
+  return <a href={url} className="icon-link">
+    <Icon size="24px" />
+    <span>{children}</span>
+  </a>
+}
+
 function App() {
   const [markerPosition, setMarkerPosition] = useState(null);
   return (
@@ -119,8 +129,9 @@ function App() {
           <h2>Click on the map and move your mouse pointer around to see the distance from that
             point</h2>
         </div>
-        <div className="social-link">
-          <a href="https://twitter.com/d3liaz">twitter.com/d3liaz</a>
+        <div className="social-links">
+          <Link url="https://twitter.com/d3liaz" icon={AiFillTwitterCircle}>twitter.com/d3liaz</Link>
+          <Link url="https://github.com/Deliaz/maplines" icon={AiFillGithub}>github</Link>
         </div>
       </header>
       <MapContainer center={[30, 0]} zoom={4} scrollWheelZoom={true}>
