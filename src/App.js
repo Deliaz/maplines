@@ -123,7 +123,7 @@ function App() {
           <a href="https://twitter.com/d3liaz">twitter.com/d3liaz</a>
         </div>
       </header>
-      <MapContainer center={[20, 0]} zoom={2.8} scrollWheelZoom={true}>
+      <MapContainer center={[30, 0]} zoom={4} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
